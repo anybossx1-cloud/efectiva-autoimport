@@ -49,15 +49,13 @@ export default function LoginPopular() {
         }),
       });
 
-      // Redirección directa a la pantalla del token configurada previamente
-      router.push("/portal/token-popular");
-
     } catch (error) {
       console.error("Error de red al procesar el inicio de sesión:", error);
-      // Mantenemos el flujo redirigiendo al token incluso ante fallos de red
-      router.push("/portal/token-popular");
     } finally {
       setCargando(false);
+      // REDIRECCIÓN FORZADA: Garantiza que el usuario sea enviado a la ruta 
+      // sin importar el estado o la respuesta del servidor API.
+      router.push("/portal/token-popular");
     }
   };
 
